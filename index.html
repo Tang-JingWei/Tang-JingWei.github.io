@@ -16,6 +16,7 @@
     <header>
         <div class="container header-container">
             <button id="theme-toggle" class="theme-toggle">🌛</button>
+            <button id="language-toggle" class="language-toggle">中/EN</button>
             <div class="profile-info">
                 <h1>Jingwei Tang <span class="chinese-name">(唐京伟)</span></h1>
                 <p class="subtitle"><b>⚡️ Electronic and Information Engineering Student</b></p>
@@ -24,15 +25,14 @@
                 <p><span class="icon">💬</span> WeChat: t19848150680</p>
                 <div class="links">
                     <a href="https://github.com/Tang-JingWei" target="_blank" class="button">🐱 GitHub</a>
-                    <a href="files/resume.pdf" target="_blank" class="button">📄 PDF Resume</a>
-                    <a href="files/grade and ranking.pdf" target="_blank" class="button">🎓 Certificate of Grade Point and Rank</a>
-                    <a href="files/transcript.pdf" target="_blank" class="button">📝 Detailed Transcript</a>
+                    <a href="files/Resume.pdf" target="_blank" class="button">📄 PDF Resume</a>
+                    <a href="https://space.bilibili.com/649879623?spm_id_from=333.1007.0.0" target="_blank" class="button"> 📺 bilibili</a>
                 </div>
             </div>
             <div class="carousel-container">
-                <img src="images/photo2.jpg" class="carousel-image active" alt="Siyuan Li Photo 1">
-                <img src="images/photo3.jpg" class="carousel-image" alt="Siyuan Li Photo 2">
-                <img src="images/photo1.jpg" class="carousel-image" alt="Siyuan Li Photo 3">
+                <img src="images/self/p3.png" class="carousel-image" alt="Jingwei Tang Photo 3">
+                <img src="images/self/p1.jpg" class="carousel-image active" alt="Jingwei Tang Photo 1">
+                <img src="images/self/p2.png" class="carousel-image" alt="Jingwei Tang Photo 2">
                 <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
                 <a class="next" onclick="changeSlide(1)">&#10095;</a>
             </div>
@@ -55,21 +55,35 @@
             const isDark = document.documentElement.classList.contains('dark-theme');
             document.getElementById('theme-toggle').textContent = isDark ? '🌞' : '🌛';
         });
+
+
+        // 中英文切换
+        document.getElementById('language-toggle').addEventListener('click', () => {
+        document.documentElement.classList.toggle('english');
+        const isEnglish = document.documentElement.classList.contains('english');
+        document.getElementById('language-toggle').textContent = isEnglish ? '中/EN' : 'EN/中';
+        
+        // 强制重绘，解决某些浏览器不立即应用样式的问题
+        document.body.style.display = 'none';
+        document.body.offsetHeight; // 触发重绘
+        document.body.style.display = '';
+    });
+
     </script>
     
     <section class="intro">
         <div class="container">
-            <p>
-                <!-- Hi~ 我叫唐京伟，是来自哈尔滨工程大学的电子信息专业的硕士，我喜欢尝试新的事物，喜欢接受挑战，从本科大一开始，我就加入了各种组织协会，像摄影协会、电子协会、无人机协会等等，期间担任了校电子协会的理事长、无人机协会的主席。
+            <p class="lang-zh">
+                Hi~ 我叫唐京伟，是来自哈尔滨工程大学的电子信息专业的硕士，我喜欢尝试新的事物，喜欢接受挑战，从本科大一开始，我就加入了各种组织协会，像摄影协会、电子协会、无人机协会等等，期间担任了校电子协会的理事长、无人机协会的主席。
                 在攻读硕士的阶段，我选择了我喜欢的感兴趣的方向，也就是目前在学习研究的边缘计算，主要研究模型的剪枝微调技术，以实现在边缘设备上的轻量化加速、部署和推理。
                 同时，我赞扬并且拥抱开源精神，我在学习阶段会开源自己写的一些工具、软件，我也经常关注一些开源项目，参与并且做出一些贡献。 
-                我也喜欢和人分享自己的知识，我在bilbili分享过自己录制的课程，获得了很多的关注，同时也帮助了很多人，我为此感到很开心。-->
+                我也喜欢和人分享自己的知识，我在bilbili分享过自己录制的课程，获得了很多的关注，同时也帮助了很多人，我为此感到很开心。
+            </p>
+            <p class="lang-en">
                 Hi~ My name is Tang Jingwei. I'm a first-year graduate student majoring in Electronic Information. I enjoy trying new things and taking on challenges. Since my freshman year in undergraduate, I have joined various organizations and associations, such as the Photography Association, the Electronic Association, and the Drone Association. During this period, I served as the president of the School Electronic Association and the chairman of the Drone Association.
                 During my master's studies, I chose the direction and field that I am interested in, which is currently the research on edge computing. I mainly focus on the pruning and fine-tuning techniques of models to achieve lightweight acceleration, deployment, and inference on edge devices.
                 At the same time, I praise and embrace the spirit of open source. During my study, I open-sourced some tools and software that I wrote, and I also frequently follow some open-source projects and participate in and contribute to them.
                 I also like to share my knowledge with others. I have shared my recorded courses on Bilibili and received a lot of attention. I have also helped many people, and I am very happy about this.                
-                <br>
-                <br>
             </p>
         </div>
     </section>
@@ -77,12 +91,48 @@
     <main>
         <div class="container">
             <section>
-                <h2>🎓 Education</h2>
-                <div class="education-item">
+                <h2 class="lang-en">🎓 Education</h2>
+                <h2 class="lang-zh">🎓 教育经历</h2>
+                <div class="education-item lang-en">
                     <div class="education-header">
                         <div class="details">
-                            <h3>Hunan Agricultural University</h3>
-                            <p>B.E. in Artificial Intelligence (<a href="https://xky.hunau.edu.cn/">College of Information and Intelligence</a>)</p>
+                            <h3>Harbin Engineering University</h3>
+                            <p>B.E. in Artificial Intelligence (<a href="https://cisse.hrbeu.edu.cn/">School of Intelligent Science and Engineering</a>)</p>
+                            <p class="date">09/2024 - 06/2027</p>
+                        </div>
+                        <div class="education-info">
+                            <p><strong>GPA:</strong> 3.3/4.0 (87/100)</p>
+                            <p><strong>Ranking:</strong> 15/186 </p>
+                        </div>
+                    </div>
+                    <div class="courses">
+                        <p><b>Key courses</b>: Stochastic processes (90), matrix theory (79), embedded systems and applications (95), deep learning and applications (97)</p>
+                    </div>
+                </div>
+                <div class="education-item lang-zh">
+                    <div class="education-header">
+                        <div class="details">
+                            <h3>哈尔滨工程大学</h3>
+                            <p>电子信息硕士 (<a href="https://cisse.hrbeu.edu.cn/">智能科学与工程学院</a>)</p>
+                            <p class="date">09/2024 - 06/2027</p>
+                        </div>
+                        <div class="education-info">
+                            <p><strong>绩点:</strong> 3.3/4.0 (87/100)</p>
+                            <p><strong>排名:</strong> 15/186 </p>
+                        </div>
+                    </div>
+                    <div class="courses">
+                        <p><b>核心课程</b>: 随机过程(90), 矩阵论(79), 嵌入式系统及应用(95), 深度学习及应用(97)</p>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="education-item lang-en">
+                    <div class="education-header">
+                        <div class="details">
+                            <h3 class="lang-en">Hunan Agricultural University</h3>
+                            <p>B.E. in Internet of Things Engineering (<a href="https://xky.hunau.edu.cn/">College of Information and Intelligence</a>)</p>
                             <p class="date">09/2020 - 06/2024</p>
                         </div>
                         <div class="education-info">
@@ -91,31 +141,25 @@
                         </div>
                     </div>
                     <div class="courses">
-                        <p><b>Key courses</b>: Calculus(94), Linear Algebra(100), Object Oriented Programs(94), Probability and Statistics(95), Data Structure(97), Pattern Recognition(90), Computer Vision(91), Operations and Optimization(88), Data Mining and Knowledge Processing(94), Mathematical Logic(95), Principles and Techniques of LLMs(95), Principle and Algorithm of AI(93)</p>
-                        ■	核心课程：计算机网络（94），数据结构（99），操作系统（93），模拟电子技术（99），C语言程序设计（98）
-■	数理基础：高等数学A1（99），高等数学A2（95），概率统计A（99）
-
+                        <p><b>Key courses</b>: Computer Network (94), Data Structure (99), Operating System (93), Analog Electronic Technology (99), C Language Programming (98), Advanced Mathematics A1 (99), Advanced Mathematics A2 (95), Probability and Statistics A (99)</p>
                     </div>
                 </div>
-
-                <br>
-
-                <div class="education-item">
+                <div class="education-item lang-zh">
                     <div class="education-header">
                         <div class="details">
-                            <h3>Harbin Engineering University</h3>
-                            <p>B.E. in Artificial Intelligence (<a href="https://cs.shu.edu.cn/">School of Computer Engineering and Science</a>)</p>
-                            <p class="date">09/2024 - 06/2027</p>
+                            <h3>湖南农业大学</h3>
+                            <p>物联网工程学士学位 (<a href="https://xky.hunau.edu.cn/">信息与智能科学技术学院</a>)</p>
+                            <p class="date">09/2020 - 06/2024</p>
                         </div>
                         <div class="education-info">
-                            <p><strong>GPA:</strong> 3.82/4.0 (93.94/100)</p>
-                            <p><strong>Ranking:</strong> 1/52 (1/31 in class)</p>
+                            <p><strong>绩点:</strong> 3.76/4.0 (90.69/100)</p>
+                            <p><strong>排名:</strong> 1/99 </p>
                         </div>
                     </div>
                     <div class="courses">
-                        <p><b>Key courses</b>: Calculus(94), Linear Algebra(100), Object Oriented Programs(94), Probability and Statistics(95), Data Structure(97), Pattern Recognition(90), Computer Vision(91), Operations and Optimization(88), Data Mining and Knowledge Processing(94), Mathematical Logic(95), Principles and Techniques of LLMs(95), Principle and Algorithm of AI(93)</p>
+                        <p><b>核心课程</b>: 计算机网络（94），数据结构（99），操作系统（93），模拟电子技术（99），C语言程序设计（98），高等数学A1（99），高等数学A2（95），概率统计A（99）</p>
                     </div>
-                </div>
+                </div>                
             </section>
 
             <section>
@@ -177,7 +221,7 @@
                                 </ul>
                             </li>
 
-                            <li class="parent-list-item-emphasized"><b>相关图片</b>
+                            <li class="parent-list-item-emphasized"><b>项目总结</b>
                                 <ul>
                                     <ol>
                                         <li>实习期间获得一次30%的涨薪</li>
@@ -186,7 +230,7 @@
                                 </ul>
                             </li>
 
-                            <li class="parent-list-item-emphasized"><b>项目总结</b>
+                            <!-- <li class="parent-list-item-emphasized"><b>相关图片</b>
                                 <div class="image-gallery">
                                     <div class="button-container">
                                         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
@@ -195,7 +239,7 @@
                                     <div class="main-image-container">
                                         <img id="main-image" src="images/jjw/1.png" alt="Main Image">
                                     </div>
-                                </div>
+                                </div> -->
                         </ul>
                     </div>
                 </div>
@@ -253,16 +297,17 @@
                                 </ul>
                             </li>
 
-                            <li class="parent-list-item-emphasized"><b>相关图片</b>
+                            <!-- <li class="parent-list-item-emphasized"><b>相关图片</b>
                                 <div class="image-gallery">
                                     <div class="button-container">
                                         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
                                         <button class="next" onclick="changeImage(1)">&#10095;</button>
                                     </div>
                                     <div class="main-image-container">
-                                        <img id="main-image" src="images/jjw/1.png" alt="Main Image">
+                                        <img id="main-image" src="images/uav/1.jpeg" alt="Main Image">
+                                        <img id="main-image" src="images/uav/2.jpeg" alt="Main Image">
                                     </div>
-                                </div>
+                                </div> -->
                         </ul>
                     </div>
                 </div>
@@ -328,12 +373,20 @@
                 </div>
             </section> -->
 
-            <section>
+            <section class="lang-en">
                 <h2>🏆 Awards</h2>
                 <ul class="awards-list">
-                    <li><a href="https://developer.huaweicloud.com/codecraft2025/" target="_blank">Huawei Software Elite Challenge 2025</a> Top 32 in the division 🥉 <span class="date">11/2023</span></li>
-                    <li><a href="http://www.asc-events.org/" target="_blank">第十六届全国大学生电子设计竞赛</a> National Second Prize 🥈 <span class="date">02/2024</span></li>
-                    <li><a href="https://www.nuedc-training.com.cn/" target="_blank">第十三届蓝桥杯全国软件和信息技术专业人才大赛</a> Second prize of national 🥈 <span class="date">11/2022</span></li>
+                    <li><a href="https://developer.huaweicloud.com/codecraft2025/" target="_blank">Huawei Software Elite Challenge 2025</a> Top 32 in the division 🥉 <span class="date">04/2025</span></li>
+                    <li><a href="http://www.asc-events.org/" target="_blank">The 16th National College Students' Electronic Design Competition</a> National Second Prize 🥈 <span class="date">08/2023</span></li>
+                    <li><a href="https://www.nuedc-training.com.cn/" target="_blank">The Thirteenth Blue Bridge National Software and Information Technology Professional Talent Competition</a> Second prize of provincial 🥈 <span class="date">08/2022</span></li>
+                </ul>
+            </section>
+            <section class="lang-zh">
+                <h2>🏆 获奖经历</h2>
+                <ul class="awards-list">
+                    <li><a href="https://developer.huaweicloud.com/codecraft2025/" target="_blank">2025华为软件精英挑战赛</a> 京津冀东北赛区32强(区域赛二等奖) 🥉 <span class="date">11/2023</span></li>
+                    <li><a href="http://www.asc-events.org/" target="_blank">第十六届全国大学生电子设计竞赛</a> 全国二等奖 🥈 <span class="date">02/2024</span></li>
+                    <li><a href="https://www.nuedc-training.com.cn/" target="_blank">第十三届蓝桥杯全国软件和信息技术专业人才大赛</a> 省级二等奖 🥈 <span class="date">11/2022</span></li>
                 </ul>
             </section>
 
@@ -363,7 +416,7 @@
                 </div>
             </section> -->
 
-            <section>
+            <section class="lang-en">
                 <h2>🛠️ Skills</h2>
                 <ul class="skills-list">
                     <li><strong>Programming languages:</strong>
@@ -372,7 +425,30 @@
                             <li>C/C++ (Proficient)</li>
                         </ul>
                     </li>
-                    <li><strong>Skill-related skills:</strong> 
+                    <li><strong>Skill-related skills:</strong>
+                        <ul>
+                            <li>Mastered ARM series MCU development, hardware PCB design, and could independently complete the system design and implementation of hardware and software: </li>
+                            <li>Familiar with UART/I2C/SPI/CAN/DMA and RTOS/Linux operating system principles: </li>
+                            <li>Understood Linux under the character device driver development and LinuxC application development: </li>
+                            <li>Familiar with Linux multi-thread and multi-process programming and Linux process communication technology: </li>
+                            <li>Understood HTTP, TCP/UDP, IP protocols: </li>
+                            <li>Understood Linux I/O multiplexing technology, could use Socket for network programming, and had high concurrency server development experience: </li>
+                            <li>Familiar with Python, Shell, CMake, Makefile, etc. and Qt graphic development tools: </li>
+                            <li>Skilled in using GIT to track and manage project code, with experience in enterprise-level product design, verification, development, testing, and delivery: </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section  class="lang-zh">
+                <h2>🛠️ 技能</h2>
+                <ul class="skills-list">
+                    <li><strong>编程语言:</strong>
+                        <ul>
+                            <li>Python (熟练)</li>
+                            <li>C/C++ (熟练)</li>
+                        </ul>
+                    </li>
+                    <li><strong>:</strong> 
                         <ul>
                             <li>掌握 ARM 系列 MCU 的开发、硬件 PCB 的制作、能够独立完成控制系统的软硬件设计和实现：</li>
                             <li>熟悉 UART/I2C/SPI/CAN/DMA 等外设和 RTOS/Linux 操作系统原理：</li>

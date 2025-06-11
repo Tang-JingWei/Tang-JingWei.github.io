@@ -751,3 +751,89 @@ html.dark-theme .hover-effect-img::before {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(100, 181, 246, 0.3);
 }
+
+/* 中英文切换 */
+.language-toggle {
+    position: fixed;
+    top: 15px;
+    right: 60px;
+    z-index: 1000;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-toggle:hover {
+    background: var(--link-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.language-toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+/* 暗色模式适配 */
+.dark-theme .language-toggle {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.dark-theme .language-toggle:hover {
+    background: var(--link-hover);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+/* 可选：带图标的版本 */
+.language-toggle::before {
+    content: "🌍";
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+/* 可选：渐变背景版本 */
+.language-toggle {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.lang-zh, .lang-en {
+    transition: all 0.3s ease;
+}
+
+.english .lang-zh {
+    display: none;
+}
+
+.english .lang-en {
+    display: block;
+}
+
+.lang-en {
+    display: none;
+}
+.english h2.lang-en,
+.english h3.lang-en,
+.english p.lang-en,
+.english li.lang-en,
+.english span.lang-en {
+    display: block;
+}
+
+.english h2.lang-zh,
+.english h3.lang-zh,
+.english p.lang-zh,
+.english li.lang-zh,
+.english span.lang-zh {
+    display: none;
+}
